@@ -10,7 +10,8 @@ M.dependencies = {'gameplay_police', 'gameplay_traffic'}
 local logTag = 'police'
 
 -- Mode thresholds: stretch early escalation so soft follow lasts longer.
-local defaultScoreLevels = {150, 900, 2800}
+-- BeamLife: later escalation. Level 2 after about three minutes on the run, level 3 after about ten.
+local defaultScoreLevels = {150, 1200, 4200}
 local loudspeakerByMode = {
   [1] = 'Police: Please pull over at the next safe opportunity.',
   [2] = 'Police: This is the police — reduce speed and stop now.',
@@ -316,7 +317,7 @@ local function resetPursuitVars() -- resets pursuit variables to default
     scoreLevels = deepcopy(defaultScoreLevels),
     strictness = 0.32, -- offense detection / score drip (lower = harder to register faults)
     offenseScoreScale = 0.75, -- scales ticket/hit scores so stacked offenses don't skip soft chase
-    speedingOverSpeed = 4.4704,
+    speedingOverSpeed = 9.7, -- BeamLife: 35 km/h over the limit before speeding counts (was 10 mph)
     speedingScore = 200,
     arrestTime = 5,
     arrestRadius = 20,

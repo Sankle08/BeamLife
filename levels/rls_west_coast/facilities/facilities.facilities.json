@@ -1223,7 +1223,7 @@
       "description":"Ran out of space, did you?",
       "icon":"poi_garage_2_round",
       "neighborhood": "West Coast",
-      "id":"chinatownGarageOverflow",
+      "id":"chinatownGarageOverflow", "excludeFromRandomStart": true,
       "name":"Chinatown Overflow",
       "parkingSpotNames":[
         "chinatownOverflow_parking1",
@@ -1243,7 +1243,7 @@
       "description":"A small garage right by the racetrack with space for just one car. Make sure it's a good one.",
       "icon":"poi_garage_2_round",
       "neighborhood": "West Coast",
-      "id":"racePaddockGarage",
+      "id":"racePaddockGarage", "excludeFromRandomStart": true,
       "name":"Race Paddock",
       "parkingSpotNames":[
         "racePaddock_parking"
@@ -1587,7 +1587,7 @@
       "description":"Hey, you can't park there! Oh, I guess you can.",
       "icon":"poi_garage_2_round",
       "neighborhood": "West Coast",
-      "id":"dockGarage",
+      "id":"dockGarage", "excludeFromRandomStart": true,
       "name":"Dockside Garage",
       "parkingSpotNames":[
         "dockGarageParking"
@@ -1603,7 +1603,7 @@
       "description":"If you're willing to get your hands dirty, this place comes with a lot of free stuff!",
       "icon":"poi_garage_2_round",
       "neighborhood": "West Coast",
-      "id":"dumpsterGarage",
+      "id":"dumpsterGarage", "excludeFromRandomStart": true,
       "name":"Dumpster Diver's Dream",
       "parkingSpotNames":[
         "dumpsterGarageParking"

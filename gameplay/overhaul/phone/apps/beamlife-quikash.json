@@ -1,0 +1,21 @@
+{
+  "id": "beamlife-quikash",
+  "name": "Quikash",
+  "icon": "cogs",
+  "iconTile": "/ui/ui-vue/mods/beamlife/tiles/gigs.svg",
+  "component": "/ui/ui-vue/mods/beamlife/apps/Quikash.vue",
+  "color": "#f59e0b",
+  "iconColor": "#ffffff",
+  "category": "Jobs",
+  "careerOnly": true,
+  "storeTagline": "Quick cash jobs",
+  "storeDescription": "One-off jobs paid on the spot: document runs, box hauls, roadside help and tow jobs.",
+  "defaultPage": 0,
+  "defaultPosition": 21,
+  "defaultHome": {
+    "slot": 5
+  },
+  "unlock": {
+    "type": "careerActive"
+  }
+}

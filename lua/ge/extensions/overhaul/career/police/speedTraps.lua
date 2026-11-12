@@ -21,10 +21,11 @@ local function isHardcoreMode()
 end
 
 local fines = {
-  {overSpeed = 6.7056, fine = {money = {amount = 750, canBeNegative = true}}},
-  {overSpeed = 11.176, fine = {money = {amount = 2000, canBeNegative = true}}},
+  -- BeamLife: speed-camera fines lowered (were 750 / 2000 / 2000).
+  {overSpeed = 6.7056, fine = {money = {amount = 150, canBeNegative = true}}},
+  {overSpeed = 11.176, fine = {money = {amount = 400, canBeNegative = true}}},
 }
-local maxFine = {money = {amount = 2000, canBeNegative = true}}
+local maxFine = {money = {amount = 800, canBeNegative = true}}
 
 -- Traffic restores pursuits without replaying start hooks after a Lua reload.
 local function hasActiveSuspect()

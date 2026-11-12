@@ -1,0 +1,33 @@
+{
+  "id": "beamlife-club",
+  "name": "R2F Club",
+  "icon": "cogs",
+  "iconTile": "/ui/ui-vue/mods/beamlife/tiles/club.svg",
+  "component": "/ui/ui-vue/mods/beamlife/apps/Club.vue",
+  "color": "#111827",
+  "iconColor": "#ffffff",
+  "category": "Social",
+  "careerOnly": true,
+  "storeTagline": "Meets, rev battles and night races",
+  "storeDescription": "Car club: weekly meets, rev battles and night races on the open road.",
+  "defaultPage": 0,
+  "defaultPosition": 26,
+  "defaultHome": {
+    "slot": 9
+  },
+  "unlock": {
+    "type": "careerActive"
+  },
+  "notifications": [
+    {
+      "key": "beamlife.club",
+      "label": "R2F Club",
+      "default": true,
+      "description": "Levels and prizes",
+      "order": 0
+    }
+  ],
+  "notificationSources": [
+    "beamlife"
+  ]
+}

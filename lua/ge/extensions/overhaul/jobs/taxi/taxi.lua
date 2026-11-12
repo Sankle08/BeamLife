@@ -1224,6 +1224,24 @@ local function rejectJob()
   dataToSend = {}
 end
 
+-- BeamLife: the driver may drop an accepted ride. The fee is 2% of the fare for a short trip and
+-- grows with the trip's length up to 5%.
+local CANCEL_FEE_MIN, CANCEL_FEE_MAX, CANCEL_FEE_FULL_TRIP_M = 0.02, 0.05, 6000
+local function cancelRide()
+  if not currentFare or (state ~= "pickup" and state ~= "dropoff") then return {ok = false} end
+  local share = CANCEL_FEE_MIN + (CANCEL_FEE_MAX - CANCEL_FEE_MIN)
+    * math.min(1, (tonumber(currentFare.totalDistance) or 0) / CANCEL_FEE_FULL_TRIP_M)
+  local fee = math.max(1, math.floor((tonumber(currentFare.baseFare) or 0) * share + 0.5))
+  local attributes = overhaul_career_economy_playerAttributes
+  if attributes and overhaul_career_career and overhaul_career_career.isActive() then
+    pcall(attributes.addAttributes, {money = -fee}, {label = "Taxi: ride cancelled", tags = {"fine", "taxi"}, category = "activity:taxi"})
+  end
+  rejectJob()
+  ui_message(string.format("Ride cancelled. Fee: $%d (%.0f%% of the fare).", fee, share * 100), 6, "taxi")
+  shared.requestTaxiState()
+  return {ok = true, fee = fee}
+end
+
 local function stopTaxiJob()
   if overhaul_vehicles_passengerOccupants then overhaul_vehicles_passengerOccupants.clear('taxi') end
   releaseReservations()
@@ -1469,6 +1487,7 @@ M.onOverhaulActive = function(active) if active == false then stopTaxiJob() end 
 
 M.acceptJob = shared.startRide
 M.rejectJob = rejectJob
+M.cancelRide = cancelRide
 M.setAvailable = setAvailable
 M.stopTaxiJob = stopTaxiJob
 M.generateJob = generateJob

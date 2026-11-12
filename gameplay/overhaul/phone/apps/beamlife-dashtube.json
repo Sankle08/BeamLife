@@ -1,0 +1,33 @@
+{
+  "id": "beamlife-dashtube",
+  "name": "DashTube",
+  "icon": "cogs",
+  "iconTile": "/ui/ui-vue/mods/beamlife/tiles/dashtube.svg",
+  "component": "/ui/ui-vue/mods/beamlife/apps/DashTube.vue",
+  "color": "#dc2626",
+  "iconColor": "#ffffff",
+  "category": "Media",
+  "careerOnly": true,
+  "storeTagline": "Publish your pursuits",
+  "storeDescription": "The dashcam records every police pursuit. Publish the clip and earn by its length, speed and size.",
+  "defaultPage": 0,
+  "defaultPosition": 25,
+  "defaultHome": {
+    "slot": 8
+  },
+  "unlock": {
+    "type": "careerActive"
+  },
+  "notifications": [
+    {
+      "key": "beamlife.dashcam",
+      "label": "DashTube",
+      "default": true,
+      "description": "New recordings and ad revenue",
+      "order": 0
+    }
+  ],
+  "notificationSources": [
+    "beamlife"
+  ]
+}

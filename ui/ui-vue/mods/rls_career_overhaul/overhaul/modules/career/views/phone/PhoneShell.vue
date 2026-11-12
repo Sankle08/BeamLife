@@ -3,7 +3,7 @@
     ref="phoneRef"
     class="phone-shell" 
     bng-no-nav="true"
-    :bng-no-child-nav="!isEntered || state !== 'open' || phoneOpeningBlocked"
+    :bng-no-child-nav="true"
     v-bng-scoped-nav="navScope"
     :class="{ 'phone-entered': isEntered, 'phone-expanded': expanded, 'no-transition': noTransition }"
     :style="wrapperStyle">
@@ -295,18 +295,16 @@ function handleOpeningState(data) {
 function updateViewportWidth() { viewportWidth.value = window.innerWidth }
 // Topic replacement removes the focused row. Keep Back in the shell's stock
 // navigation scope even when DOM focus falls back to the document body.
+// BeamLife: the phone is mouse-only. The scope is never activated, so the controller and the
+// keyboard keep driving the car instead of moving a focus ring around the phone.
 const navScope = computed(() => ({
-  scopeId: 'phone-shell', activateOnMount: true, trapPolicy: 'always',
+  scopeId: 'phone-shell', activateOnMount: false, activated: false,
   bubbleWhitelistEvents: ['menu'],
-  // Reasserting activated:true on every clock/cash render resumes this parent
-  // over its modal or slider scope. Activate once when the shell becomes ready.
-  ...(!(isPhoneRoute(route) && state.value === 'open' && !phoneOpeningBlocked.value) ? { activated: false } : {}),
-  canDeactivate() { if (state.value !== 'open') return true; back(); return false },
 }))
 const navigation = useScopedNav()
 watch(() => [route.name, state.value === 'open', phoneOpeningBlocked.value], async () => {
   await nextTick()
-  if (isPhoneRoute(route) && state.value === 'open' && !phoneOpeningBlocked.value) navigation.activateScope('phone-shell')
+  // BeamLife: mouse-only phone, the scope stays inactive.
 })
 async function back() {
   if (phoneTutorial.shouldBlockPhoneBack()) return

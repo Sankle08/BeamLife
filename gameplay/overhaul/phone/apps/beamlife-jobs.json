@@ -1,0 +1,33 @@
+{
+  "id": "beamlife-jobs",
+  "name": "WorkDay",
+  "icon": "cogs",
+  "iconTile": "/ui/ui-vue/mods/beamlife/tiles/jobs.svg",
+  "component": "/ui/ui-vue/mods/beamlife/apps/Jobs.vue",
+  "color": "#2563eb",
+  "iconColor": "#ffffff",
+  "category": "Jobs",
+  "careerOnly": true,
+  "storeTagline": "Jobs with a timetable",
+  "storeDescription": "Regular jobs with fixed hours: drive to work, clock in, the shift passes and you are paid by the day or by the week.",
+  "defaultPage": 0,
+  "defaultPosition": 20,
+  "defaultHome": {
+    "slot": 4
+  },
+  "unlock": {
+    "type": "careerActive"
+  },
+  "notifications": [
+    {
+      "key": "beamlife.jobs",
+      "label": "Jobs",
+      "default": true,
+      "description": "Missed shifts, weekly pay and dismissals",
+      "order": 0
+    }
+  ],
+  "notificationSources": [
+    "beamlife"
+  ]
+}

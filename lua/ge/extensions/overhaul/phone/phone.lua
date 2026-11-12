@@ -93,6 +93,8 @@ local function playerSpeedMph()
 end
 
 local function phoneBlockedByMovement()
+  -- BeamLife: the phone works while driving.
+  if true then return false end
   local speedMph = playerSpeedMph()
   local allowMoving = activityAccess.get().allowPhoneWhileMoving()
   return not allowMoving and speedMph > MOVING_SPEED_MPH

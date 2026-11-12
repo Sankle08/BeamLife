@@ -16,7 +16,8 @@ local vehicleMap = require("overhaul/career/garage/inventory/vehicleMap")
 -- Config ------------------------------------------------------------------------------------------
 
 local LOG_TAG = "garageManager"
-local MAX_RANDOM_STARTING_GARAGE_PRICE = 50000 -- the free random starter pool only holds homes priced in (0, 50000]
+-- BeamLife: the cap is higher so the town houses near the city centre join the pool.
+local MAX_RANDOM_STARTING_GARAGE_PRICE = 100000 -- the free random starter pool only holds homes priced in (0, 50000]
 
 -- Persistence ------------------------------------------------------------------------------------
 
@@ -329,6 +330,8 @@ local function installStartingGarages(inputs, helpers)
   function helpers.isEligibleRandomStartingGarage(garage)
     if type(garage) ~= "table" or not garage.id then return false end
     if garage.notPurchasable == true then return false end
+    -- BeamLife: homes far from the city's jobs are never handed out as the free starter.
+    if garage.excludeFromRandomStart == true then return false end
     local price = tonumber(garage.defaultPrice)
     if not price or price <= 0 or price > MAX_RANDOM_STARTING_GARAGE_PRICE then return false end
     return true

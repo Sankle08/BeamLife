@@ -1,0 +1,33 @@
+{
+  "id": "beamlife-haul",
+  "name": "Haulr",
+  "icon": "cogs",
+  "iconTile": "/ui/ui-vue/mods/beamlife/tiles/heavy.svg",
+  "component": "/ui/ui-vue/mods/beamlife/apps/Haul.vue",
+  "color": "#0d9488",
+  "iconColor": "#ffffff",
+  "category": "Jobs",
+  "careerOnly": true,
+  "storeTagline": "Freight with your own vehicle",
+  "storeDescription": "Routes for Interstate Freight (semi trucks) and QuickPack (vans and pickups), with reputation, positions and weekly bonuses.",
+  "defaultPage": 0,
+  "defaultPosition": 22,
+  "defaultHome": {
+    "slot": 6
+  },
+  "unlock": {
+    "type": "careerActive"
+  },
+  "notifications": [
+    {
+      "key": "beamlife.freight",
+      "label": "Haulr",
+      "default": true,
+      "description": "Job offers and the weekly quota",
+      "order": 0
+    }
+  ],
+  "notificationSources": [
+    "beamlife"
+  ]
+}

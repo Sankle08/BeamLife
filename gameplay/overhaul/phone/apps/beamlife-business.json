@@ -1,0 +1,33 @@
+{
+  "id": "beamlife-business",
+  "name": "Business",
+  "icon": "cogs",
+  "iconTile": "/ui/ui-vue/mods/beamlife/tiles/business.svg",
+  "component": "/ui/ui-vue/mods/beamlife/apps/Business.vue",
+  "color": "#7c3aed",
+  "iconColor": "#ffffff",
+  "category": "Business",
+  "careerOnly": true,
+  "storeTagline": "Your businesses",
+  "storeDescription": "Buy shops and companies that earn every day. Each trade earns in its own way.",
+  "defaultPage": 0,
+  "defaultPosition": 24,
+  "defaultHome": {
+    "slot": 7
+  },
+  "unlock": {
+    "type": "careerActive"
+  },
+  "notifications": [
+    {
+      "key": "beamlife.business",
+      "label": "Businesses",
+      "default": true,
+      "description": "Cash box full",
+      "order": 0
+    }
+  ],
+  "notificationSources": [
+    "beamlife"
+  ]
+}

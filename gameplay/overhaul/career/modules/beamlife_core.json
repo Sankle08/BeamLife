@@ -1,0 +1,5 @@
+{
+  "id": "beamlife_core",
+  "order": 900,
+  "module": "beamlife/core"
+}

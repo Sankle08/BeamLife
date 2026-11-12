@@ -74,6 +74,9 @@
           {{ fareStreak }}
         </span>
       </div>
+      <button class="state-button stop" @click.stop="cancelRide">
+        {{ cancelArmed ? "Confirm: pay 2-5% fee" : "Cancel ride" }}
+      </button>
     </div>
 
     <!-- Accept Rider State -->
@@ -264,6 +267,22 @@ const formatWholeNumber = (value) => {
   const numericValue = Number(value);
   if (!Number.isFinite(numericValue)) return "0";
   return Math.floor(numericValue).toLocaleString("en-US");
+};
+
+// BeamLife: dropping an accepted ride takes two presses and costs 2-5% of the fare.
+const cancelArmed = ref(false);
+let cancelTimer = null;
+const cancelRide = () => {
+  if (!cancelArmed.value) {
+    cancelArmed.value = true;
+    clearTimeout(cancelTimer);
+    cancelTimer = setTimeout(() => { cancelArmed.value = false; }, 4000);
+    return;
+  }
+  cancelArmed.value = false;
+  clearTimeout(cancelTimer);
+  lua.overhaul_jobs_taxi_taxi.cancelRide();
+  currentState.value = "ready";
 };
 
 const setState = (newState) => {

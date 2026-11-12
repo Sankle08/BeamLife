@@ -269,6 +269,14 @@ local function handleCriminalEvadeReward(vehicleId, data, inventoryId)
     return
   end
 
+  -- BeamLife: the footage is no longer sold on the spot. The dashcam module keeps the clip and the
+  -- player publishes it from the DashTube phone app.
+  local dashcam = rawget(_G, "beamlife_dashcam")
+  if dashcam and dashcam.replacesInstantFootageSale and dashcam.replacesInstantFootageSale() then
+    overhaul_career_garage_inventory.addEvade(inventoryId)
+    return
+  end
+
   local rewardAmount = calculateRewardAmount(data.score or 10, config.CRIMINAL_REWARD_MULTIPLIER, "criminal")
 
   local rewardData = {

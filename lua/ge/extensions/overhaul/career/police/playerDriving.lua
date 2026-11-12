@@ -465,8 +465,11 @@ local function calculateSuspectPursuitFine(pursuitData)
   local globalIndex = overhaul_career_economy_globalEconomy.getGlobalIndex() or 1
   local sectionMult = overhaul_career_economyAdjuster.getSectionMultiplier("police") or 1
   local base = violations * 100 + score * 0.5 + mode * 75
-  local fine = math.floor(base * globalIndex * sectionMult)
-  return math.max(150, math.min(fine, 750000))
+  -- BeamLife: pulling over when asked (level 1) is a ticket, not a punishment.
+  if mode <= 1 then base = violations * 60 + 40 end
+  -- BeamLife: fines are less than half of the Overhaul's.
+  local fine = math.floor(base * 0.4 * globalIndex * sectionMult)
+  return math.max(mode <= 1 and 40 or 100, math.min(fine, 750000))
 end
 
 local function onPursuitAction(vehId, action, data)
