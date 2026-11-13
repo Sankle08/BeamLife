@@ -1,0 +1,20 @@
+{
+  "id": "beamlifeCalmWeather",
+  "key": "beamlifeCalmWeather",
+  "order": 1040,
+  "type": "boolean",
+  "default": false,
+  "section": "beamlife",
+  "validateSingle": true,
+  "validateLoaded": true,
+  "onChange": {
+    "extension": "beamlife_perf",
+    "call": "apply"
+  },
+  "ui": {
+    "label": "Calm weather",
+    "description": "No rainy days and no morning fog. The day and night cycle still runs.",
+    "section": "beamlife",
+    "icon": "weather"
+  }
+}

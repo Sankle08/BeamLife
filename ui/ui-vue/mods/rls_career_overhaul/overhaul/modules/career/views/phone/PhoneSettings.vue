@@ -181,6 +181,14 @@
         </div>
       </section>
 
+      <!-- BeamLife: performance options live in their own screen. -->
+      <button type="button" class="settings-link-row" @click="openPerformanceSettings">
+        <span class="dropdown-title">Performance</span>
+        <div class="summary-meta-wrap">
+          <span class="dropdown-meta">Traffic, crowds, weather</span>
+        </div>
+      </button>
+
       <button type="button" class="settings-link-row" @click="openNotificationSettings">
         <span class="dropdown-title">Notifications</span>
         <div class="summary-meta-wrap">
@@ -228,6 +236,13 @@ import {
 } from '../../composables/usePhoneSettings'
 import { usePhoneNotificationSettings } from '../../composables/usePhoneNotificationSettings'
 import { acquireScope } from '../../utils/luaScopes'
+import { useRouter } from 'vue-router'
+import { navigatePhoneRoute } from '../../utils/phoneNavigation'
+
+const performanceRouter = useRouter()
+function openPerformanceSettings() {
+  navigatePhoneRoute(performanceRouter, '/overhaul/phone-app/beamlife-performance')
+}
 
 usePhoneAppFocus()
 

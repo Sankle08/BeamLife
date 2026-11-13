@@ -651,6 +651,12 @@ function M.speedLimit()
   return M.round(limit, 0.1)
 end
 
+-- A value from the Overhaul's player settings, or nil when they are not loaded.
+function M.setting(key)
+  local owner = rawget(_G, "overhaul_shell_settings")
+  return owner and owner.getSetting and try(owner.getSetting, key)
+end
+
 function M.getHudState()
   local now = M.now()
   local date = M.dateInfo(now.day)
@@ -665,6 +671,7 @@ function M.getHudState()
     time = M.formatClock(now.minute), minute = now.minute, day = now.day,
     date = date.label, weekday = date.weekdayName, dayOfMonth = date.dayOfMonth, month = date.monthShort,
     run = M.runState(), notes = notes, speedLimit = M.speedLimit(),
+    mapSaver = M.setting("beamlifeMapSaver") == true, appSaver = M.setting("beamlifeAppSaver") == true,
     phoneOpen = overhaul_phone_phone ~= nil and try(overhaul_phone_phone.isPhoneOpen) == true,
   }
 end
@@ -674,6 +681,7 @@ local function pushHud(force)
   local runState = state.run
   local key = table.concat({
     tostring(state.minute), tostring(state.day), tostring(state.phoneOpen), tostring(#state.notes), tostring(state.speedLimit),
+    tostring(state.mapSaver), tostring(state.appSaver),
     runState and (tostring(runState.step) .. ":" .. tostring(runState.distance) .. ":" .. tostring(runState.dwellLeft)) or "-",
   }, "|")
   if not force and key == lastHudKey then return end

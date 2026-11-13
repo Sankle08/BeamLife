@@ -32,6 +32,11 @@ export const HELP = {
     { title: "What makes a clip worth more", text: "Long chases, high top speed, a higher pursuit level, more police units and crashes all add views. Getting caught cuts the views to 60%." },
     { title: "Grow the channel", text: "Views bring subscribers, and subscribers boost every later video, up to double." },
   ],
+  performance: [
+    { title: "Lighter, not emptier", text: "These switches cut what costs the most frames: AI traffic, parked cars, meet crowds and police backup. The world, the day and night cycle and your jobs stay the same." },
+    { title: "Start with a preset", text: "Quality keeps everything. Balanced trims traffic and parked cars. Performance turns every saver on. Change any single option afterwards." },
+    { title: "When it takes effect", text: "Traffic and parked cars change within a few seconds. The meet crowd applies from the next meet. Graphics quality itself stays in the game's Options menu." },
+  ],
   club: [
     { title: "Join the scene", text: "A one-time fee makes you a member. Everything you do in the club earns reputation, and each new level pays a prize." },
     { title: "Meets", text: "Meets run on Wednesday, Friday and Saturday nights. Drive to the meet, park for 20 seconds to check in. Each check-in has a 1 in 5 chance of a raffle prize." },

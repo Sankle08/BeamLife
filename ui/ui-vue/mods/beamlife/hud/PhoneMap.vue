@@ -9,21 +9,25 @@
 <script setup>
 // The phone lying on its side as a navigation map. The map itself is the Overhaul's phone map
 // (the one behind its Taxi app), so it shows the same roads and the player's arrow.
-import { onMounted, onUnmounted, ref } from "vue"
+import { onMounted, onUnmounted, ref, watch } from "vue"
 import { useMinimapStore } from "../../rls_career_overhaul/overhaul/modules/career/stores/minimapStore.js"
 
-defineProps({ time: { type: String, default: "" } })
+const props = defineProps({ time: { type: String, default: "" }, saver: { type: Boolean, default: false } })
 defineEmits(["close"])
 
 const store = useMinimapStore()
 const screen = ref(null)
 let view = null
 
+// The map saver hides the terrain picture; only roads are drawn.
+watch(() => props.saver, saver => { store.showTerrainImage = !saver }, { immediate: true })
+
 onMounted(() => {
   store.acquire()
   view = store.mountMap(screen.value, { fit: "slice" })
 })
 onUnmounted(() => {
+  store.showTerrainImage = true
   view?.dispose()
   store.release()
 })

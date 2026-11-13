@@ -7,6 +7,12 @@ import { lua } from "./bridge.js"
 
 const WIDE_KEY = "beamlife.wide"
 const REFRESH_MS = 3000
+const SAVER_REFRESH_MS = 8000
+
+// The Performance screen's "App refresh saver" reaches the UI through the HUD state.
+function refreshDelay() {
+  return window.__beamlifePerf?.appSaver ? SAVER_REFRESH_MS : REFRESH_MS
+}
 const NOTICE_MS = 4500
 
 function readWide() {
@@ -76,12 +82,18 @@ export function useBeamlifeApp(appKeys, load, options = {}) {
   onMounted(() => {
     events.on("beamlifeChanged", changed)
     refresh()
-    timer = setInterval(refresh, REFRESH_MS)
+    const tick = () => {
+      timer = setTimeout(async () => {
+        await refresh()
+        if (alive) tick()
+      }, refreshDelay())
+    }
+    tick()
   })
   onUnmounted(() => {
     alive = false
     events.off("beamlifeChanged", changed)
-    clearInterval(timer)
+    clearTimeout(timer)
     clearTimeout(noticeTimer)
     dispose?.()
   })

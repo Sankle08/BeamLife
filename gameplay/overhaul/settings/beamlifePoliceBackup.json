@@ -1,0 +1,22 @@
+{
+  "id": "beamlifePoliceBackup",
+  "key": "beamlifePoliceBackup",
+  "order": 1030,
+  "type": "number",
+  "default": 3,
+  "section": "beamlife",
+  "validateSingle": true,
+  "validateLoaded": true,
+  "options": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "ui": {
+    "label": "Police backup",
+    "description": "Extra police units BeamLife can send in a long pursuit.",
+    "section": "beamlife",
+    "icon": "policeCar"
+  }
+}

@@ -33,9 +33,17 @@ local function collectTrackedObjects(tracked, controlId)
   return objects
 end
 
+-- BeamLife performance option: the map saver sends positions about four times a second.
+local SAVER_INTERVAL_S = 0.25
+local function markerInterval()
+  local owner = rawget(_G, 'overhaul_shell_settings')
+  return owner and owner.getSetting('beamlifeMapSaver') == true and SAVER_INTERVAL_S or MARKER_INTERVAL_S
+end
+
 local function onGuiUpdate()
-  if markerElapsedS < MARKER_INTERVAL_S then return end
-  markerElapsedS = markerElapsedS % MARKER_INTERVAL_S
+  local interval = markerInterval()
+  if markerElapsedS < interval then return end
+  markerElapsedS = markerElapsedS % interval
   local controlId = be:getPlayerVehicleID(0)
   if not controlId then return end
 
@@ -69,7 +77,7 @@ end
 -- onGuiUpdate only runs when CEF is ready, but receives a simulation frame's
 -- dt. Accumulate time on every update so slower UI frames do not slow the clock.
 function M.onUpdate(dtReal)
-  markerElapsedS = math.min(markerElapsedS + dtReal, MARKER_INTERVAL_S * 2)
+  markerElapsedS = math.min(markerElapsedS + dtReal, SAVER_INTERVAL_S * 2)
 end
 
 M.onGuiUpdate = onGuiUpdate

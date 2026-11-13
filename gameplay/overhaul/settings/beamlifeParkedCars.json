@@ -1,0 +1,25 @@
+{
+  "id": "beamlifeParkedCars",
+  "key": "beamlifeParkedCars",
+  "order": 1010,
+  "type": "string",
+  "default": "game",
+  "section": "beamlife",
+  "validateSingle": true,
+  "validateLoaded": true,
+  "options": [
+    "game",
+    "few",
+    "none"
+  ],
+  "onChange": {
+    "extension": "beamlife_perf",
+    "call": "apply"
+  },
+  "ui": {
+    "label": "Parked cars",
+    "description": "Parked cars along the streets. Few = up to 6.",
+    "section": "beamlife",
+    "icon": "car"
+  }
+}

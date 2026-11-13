@@ -100,6 +100,9 @@ local function spawnReinforcement(spec, playerId)
 end
 
 local function escalate(playerId)
+  -- The Performance screen limits how many extra units may join.
+  local limit = beamlife_perf and beamlife_perf.policeBackupLimit() or #REINFORCEMENTS
+  if recording.stage >= limit then return end
   local spec = REINFORCEMENTS[recording.stage + 1]
   if not spec or recording.seconds < spec.after then return end
   recording.stage = recording.stage + 1

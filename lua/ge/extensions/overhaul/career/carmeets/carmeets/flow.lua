@@ -176,6 +176,11 @@ function lib.create(inputs)
     local playerVeh = be:getPlayerVehicle(0)
     local playerPos = playerVeh and playerVeh:getPosition() or vec3(meet.position)
     local spawnGeneration = carMeetState.meetGeneration
+    -- BeamLife performance option: a smaller crowd.
+    if overhaul_shell_settings and overhaul_shell_settings.getSetting('beamlifeMeetCrowd') == 'small' then
+      spotCount = math.min(spotCount, 6)
+    end
+    spotCount = math.min(spotCount, #availableSpots)
     core_jobsystem.create(function(job)
       local deferPoiRefresh = inputs.PRESPAWN_MEET_VEHICLES_ON_ACCEPT
       for i = 1, spotCount do

@@ -1,0 +1,20 @@
+{
+  "id": "beamlifeMeetCrowd",
+  "key": "beamlifeMeetCrowd",
+  "order": 1020,
+  "type": "string",
+  "default": "full",
+  "section": "beamlife",
+  "validateSingle": true,
+  "validateLoaded": true,
+  "options": [
+    "full",
+    "small"
+  ],
+  "ui": {
+    "label": "Car meet crowd",
+    "description": "Cars spawned at car meets. Small = up to 6.",
+    "section": "beamlife",
+    "icon": "cars"
+  }
+}

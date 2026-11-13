@@ -1,0 +1,16 @@
+{
+  "id": "beamlifeMapSaver",
+  "key": "beamlifeMapSaver",
+  "order": 1050,
+  "type": "boolean",
+  "default": false,
+  "section": "beamlife",
+  "validateSingle": true,
+  "validateLoaded": true,
+  "ui": {
+    "label": "Phone map saver",
+    "description": "The phone map updates less often and hides the terrain picture.",
+    "section": "beamlife",
+    "icon": "map"
+  }
+}

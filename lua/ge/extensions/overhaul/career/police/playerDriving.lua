@@ -234,6 +234,14 @@ local function getFallbackTrafficAmounts()
     end
   end
 
+  -- BeamLife performance options cap what the game settings ask for.
+  local density = overhaul_shell_settings.getSetting('beamlifeTrafficDensity')
+  if density == 'medium' then trafficAmount = math.min(trafficAmount, 8)
+  elseif density == 'low' then trafficAmount = math.min(trafficAmount, 4) end
+  local parked = overhaul_shell_settings.getSetting('beamlifeParkedCars')
+  if parked == 'few' then parkingAmount = math.min(parkingAmount, 6)
+  elseif parked == 'none' then parkingAmount = 0 end
+
   return trafficAmount, parkingAmount
 end
 

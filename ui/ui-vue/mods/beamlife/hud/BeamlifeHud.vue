@@ -1,7 +1,7 @@
 <template>
   <template v-if="visible">
     <!-- The phone lying on its side, used as a navigation map. -->
-    <component :is="mapComponent" v-if="mapOn && mapComponent" :time="hud.time" @close="toggleMap" />
+    <component :is="mapComponent" v-if="mapOn && mapComponent" :time="hud.time" :saver="!!hud.mapSaver" @close="toggleMap" />
 
     <div class="blhud">
       <button
@@ -86,7 +86,10 @@ const limitText = computed(() => {
 })
 
 function update(state) {
-  if (state && typeof state === "object") hud.value = state
+  if (!state || typeof state !== "object") return
+  hud.value = state
+  // The phone apps read the refresh preference from here (see kit/useApp.js).
+  window.__beamlifePerf = { appSaver: state.appSaver === true, mapSaver: state.mapSaver === true }
 }
 function open() {
   lua("beamlife_core.openPhone")

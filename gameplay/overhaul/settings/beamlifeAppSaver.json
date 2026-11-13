@@ -1,0 +1,16 @@
+{
+  "id": "beamlifeAppSaver",
+  "key": "beamlifeAppSaver",
+  "order": 1060,
+  "type": "boolean",
+  "default": false,
+  "section": "beamlife",
+  "validateSingle": true,
+  "validateLoaded": true,
+  "ui": {
+    "label": "App refresh saver",
+    "description": "BeamLife phone apps refresh every 8 seconds instead of 3.",
+    "section": "beamlife",
+    "icon": "phone"
+  }
+}

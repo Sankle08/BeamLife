@@ -32,6 +32,11 @@ Modified upstream files:
   `levels/rls_west_coast/facilities/facilities.facilities.json`: the free starting home is drawn from
   homes near the city centre.
 
+- Performance options (`gameplay/overhaul/settings/beamlife*.json`) are read by
+  `career/police/playerDriving.lua` (traffic and parked-car caps), `career/carmeets/carmeets/flow.lua`
+  (meet crowd) and `phone/apps/minimap.lua` (map update rate); `.../views/phone/PhoneSettings.vue` links to
+  the Performance screen.
+
 Added files (the BeamLife layer):
 
 - `lua/ge/extensions/beamlife/`: core services, WorkDay shift jobs, Bicos gigs, the two freight

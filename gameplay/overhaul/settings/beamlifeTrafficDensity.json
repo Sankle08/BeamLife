@@ -1,0 +1,25 @@
+{
+  "id": "beamlifeTrafficDensity",
+  "key": "beamlifeTrafficDensity",
+  "order": 1000,
+  "type": "string",
+  "default": "game",
+  "section": "beamlife",
+  "validateSingle": true,
+  "validateLoaded": true,
+  "options": [
+    "game",
+    "medium",
+    "low"
+  ],
+  "onChange": {
+    "extension": "beamlife_perf",
+    "call": "apply"
+  },
+  "ui": {
+    "label": "Traffic",
+    "description": "Moving AI cars. Game = the game's own setting, Medium = up to 8, Low = up to 4.",
+    "section": "beamlife",
+    "icon": "car"
+  }
+}

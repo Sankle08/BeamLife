@@ -1,0 +1,18 @@
+{
+  "id": "beamlife-performance",
+  "name": "Performance",
+  "icon": "cogs",
+  "iconTile": "/ui/ui-vue/mods/beamlife/tiles/performance.svg",
+  "component": "/ui/ui-vue/mods/beamlife/apps/Performance.vue",
+  "color": "#16a34a",
+  "iconColor": "#ffffff",
+  "category": "Tools",
+  "careerOnly": true,
+  "storeTagline": "Lighter game, same world",
+  "storeDescription": "Switches for traffic, parked cars, meet crowds, police backup, weather and phone refresh, with Quality, Balanced and Performance presets. Also under Settings.",
+  "defaultPage": 0,
+  "defaultPosition": 27,
+  "unlock": {
+    "type": "careerActive"
+  }
+}
